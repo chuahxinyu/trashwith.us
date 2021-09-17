@@ -1,0 +1,1 @@
+# what-to-do-with-your-crap-app
