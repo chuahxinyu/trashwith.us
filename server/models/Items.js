@@ -1,3 +1,5 @@
+const Actions = require("./Actions");
+
 module.exports = (sequelize, DataTypes) => {
 
     const Items = sequelize.define("Items", {
@@ -21,5 +23,13 @@ module.exports = (sequelize, DataTypes) => {
         }
     })
 
+    Items.associate = (models) => {
+        Items.belongsToMany(models.Actions, {
+            through: models.ItemActions,
+            onDelete: "cascade"
+        });
+    }
+
     return Items;
-} 
+}
+
