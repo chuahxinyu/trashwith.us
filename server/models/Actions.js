@@ -17,5 +17,12 @@ module.exports = (sequelize, DataTypes) => {
         }
     })
 
+    Actions.associate = (models) => {
+        Actions.belongsToMany(models.Items, {
+            through: 'ItemActions',
+            onDelete: "cascade"
+        });
+    }
+
     return Actions;
-} 
+}
