@@ -4,10 +4,9 @@ const app = express();
 
 const db = require('./models');
 
-const { Items, Actions } = require("./models");
+const { Items, Actions, ItemActions } = require("./models");
 
 const cors = require('cors');
-const ItemActions = require('./models/ItemActions');
 app.use(cors({
     origin: 'http://localhost:3000'
 }));
@@ -41,8 +40,16 @@ app.post('/api/items', async (req, res) => {
     res.json(item);
 });
 
-app.get('/api/items', (req, res) => {
-    
+app.post('/api/actions', async (req, res) => {
+    const action = req.body;
+    await Actions.create(action);
+    res.json(action);
+})
+
+app.post('/api/itemactions', async (req, res) => {
+    const itemaction = req.body;
+    await ItemActions.create(itemaction);
+    res.json(itemaction);
 })
 
 db.sequelize.sync().then(() => {

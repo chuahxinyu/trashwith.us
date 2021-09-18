@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         imgSrc: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            defaultValue: "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
         },
         otherResources: {
             type: DataTypes.STRING
