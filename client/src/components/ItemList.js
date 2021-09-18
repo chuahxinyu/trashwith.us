@@ -27,7 +27,7 @@ export default function ItemList() {
     useEffect(() => {
         console.log("effect")
         axios
-            .get("http://localhost:30001/api/items")
+            .get("http://localhost:3001/api/items")
             .then(response => {
                 console.log("promise fulfilled")
                 setItems(response.data)
