@@ -44,7 +44,7 @@ export default function ItemList() {
                 }).map((item) => (
                     <Item 
                         key = {item.id}
-                        itenId = {item.id}
+                        itemId = {item.id}
                         name = {item.name}
                         imgSrc = {item.imgSrc}
                         setIsBlurred = {setIsBlurred}
