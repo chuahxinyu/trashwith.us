@@ -3,23 +3,10 @@ const Actions = require("./Actions");
 module.exports = (sequelize, DataTypes) => {
 
     const ItemActions = sequelize.define("ItemActions", {
-        itemId: {
+        itemActionId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true,
-            references: {
-                model: 'Items',
-                key: 'id'
-            }
-        },
-        actionId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            references: {
-                model: 'Actions',
-                key:'id'
-            }
+            primaryKey: true
         }
     })
 
