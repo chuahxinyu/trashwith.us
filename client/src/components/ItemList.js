@@ -6,7 +6,6 @@ import { FaSearch } from 'react-icons/fa'
 export default function ItemList() {
     const [isBlurred, setIsBlurred] = useState(false)
     const [items, setItems] = useState([])
-    const [actionlist, setActions] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
@@ -16,13 +15,6 @@ export default function ItemList() {
                 setItems(response.data)
             })
     }, [])
-
-
-    // onClick ((id) => {
-    //     axios
-    //         .get("http://localhost:30002/api/items")
-    // })
-    // /api/items/id
 
     return (
         <div>
@@ -52,9 +44,9 @@ export default function ItemList() {
                 }).map((item) => (
                     <Item 
                         key = {item.id}
+                        itenId = {item.id}
                         name = {item.name}
                         imgSrc = {item.imgSrc}
-                        actionlist = {actionlist}
                         setIsBlurred = {setIsBlurred}
                     />
                 ))}
