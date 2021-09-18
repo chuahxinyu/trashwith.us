@@ -1,41 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import Item from './Item'
+import axios from 'axios'
 
 export default function ItemList() {
     const [isBlurred, setIsBlurred] = useState(false)
-
-    const items = [
-        {
-            "id": 1, 
-            "itemName": "Aerosol Cans",
-            "itemImg": "",
-            "actionList": [1, 2, 3]
-        },
-        {
-            "id": 2,
-            "itemName": "Adhesive Strips (Band Aids)", 
-            "itemImg": "",
-            "actionList": [1, 2]
-        },
-        {
-            "id": 3,
-            "itemName": "Aluminium Cans", 
-            "itemImg": "",
-            "actionList": [2, 3]
-        },
-        {
-            "id": 4,
-            "itemName": "Alumninuim Foil", 
-            "itemImg": "",
-            "actionList": [1, 3]
-        },
-        {
-            "id": 5,
-            "itemName": "Aluminium Trays", 
-            "itemImg": "",
-            "actionList": [2]
-        }
-    ]
+    const [items, setItems] = useState([])
 
     const actionlist = [
         {
@@ -54,6 +23,16 @@ export default function ItemList() {
             description: "donate it to a local donation centre"
         }
     ]
+
+    useEffect(() => {
+        console.log("effect")
+        axios
+            .get("http://localhost:3001/api/items")
+            .then(response => {
+                console.log("promise fulfilled")
+                setItems(response.data)
+            })
+    }, [])
 
     return (
         <div>
