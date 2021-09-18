@@ -1,38 +1,40 @@
 import React, {useState} from 'react'
 import Item from './Item'
+import { FaSearch } from 'react-icons/fa'
 
 export default function ItemList() {
     const [isBlurred, setIsBlurred] = useState(false)
+    const [searchTerm, setSearchTerm] = useState('')
 
     const items = [
         {
             "id": 1, 
-            "itemName": "Aerosol Cans",
-            "itemImg": "",
+            "name": "Aerosol Cans",
+            "imgSrc": "https://images.pexels.com/photos/7117027/pexels-photo-7117027.jpeg?cs=srgb&dl=pexels-cottonbro-7117027.jpg&fm=jpg",
             "actionList": [1, 2, 3]
         },
         {
             "id": 2,
-            "itemName": "Adhesive Strips (Band Aids)", 
-            "itemImg": "",
+            "name": "Adhesive Strips (Band Aids)", 
+            "imgSrc": "placeholder-img.png",
             "actionList": [1, 2]
         },
         {
             "id": 3,
-            "itemName": "Aluminium Cans", 
-            "itemImg": "",
+            "name": "Aluminium Cans", 
+            "imgSrc": "https://images.pexels.com/photos/404178/pexels-photo-404178.jpeg?cs=srgb&dl=pexels-jonathan-petersson-404178.jpg&fm=jpg",
             "actionList": [2, 3]
         },
         {
             "id": 4,
-            "itemName": "Alumninuim Foil", 
-            "itemImg": "",
+            "name": "Alumninuim Foil", 
+            "imgSrc": "https://images.pexels.com/photos/7232656/pexels-photo-7232656.jpeg?cs=srgb&dl=pexels-artem-podrez-7232656.jpg&fm=jpg",
             "actionList": [1, 3]
         },
         {
             "id": 5,
-            "itemName": "Aluminium Trays", 
-            "itemImg": "",
+            "name": "Aluminium Trays", 
+            "imgSrc": "placeholder-img.png",
             "actionList": [2]
         }
     ]
@@ -57,11 +59,33 @@ export default function ItemList() {
 
     return (
         <div>
+            <div className="search">
+                <input 
+                    className="searchbar"
+                    type="text"
+                    placeholder="search..."
+                    onChange={event => {setSearchTerm(event.target.value)}}>
+                </input>
+
+                <button type="submit" className="search-btn">
+                    <FaSearch />
+                </button>
+            </div>
+
             <div className="item-list">
-                {items.map((item) => (
+                {items.filter((val) => {
+                    if (searchTerm === ""){
+                        if (! items.includes(val.id)){
+                            return val
+                        }
+                    } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())){
+                        return val
+                    }
+                    return null
+                }).map((item) => (
                     <Item 
                         key = {item.id}
-                        name = {item.itemName}
+                        name = {item.name}
                         actionlist = {actionlist}
                         setIsBlurred = {setIsBlurred}
                     />
