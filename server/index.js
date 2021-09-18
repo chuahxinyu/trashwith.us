@@ -29,10 +29,10 @@ app.get('/api/items', async (req, res) => {
         });
         console.log(qdata.id);
         res.json(action);
+    } else {
+        const listOfItem = await Items.findAll();
+        res.json(listOfItem);
     }
-
-    const listOfItem = await Items.findAll();
-    res.json(listOfItem);
 })
 
 app.post('/api/items', async (req, res) => {
