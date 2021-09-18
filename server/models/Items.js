@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         otherResources: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         }
     })
 
