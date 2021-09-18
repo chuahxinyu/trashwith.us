@@ -18,8 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         otherResources: {
-            type: DataTypes.STRING,
-            allowNull: true
+            type: DataTypes.STRING
         }
     })
 
