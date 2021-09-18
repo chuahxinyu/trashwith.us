@@ -9,11 +9,10 @@ export default function Item({itemId, name, imgSrc, setIsBlurred}) {
     const getActions = ({itemId}) => {
         var itemIdStr = itemId + ""
         axios
-            .get("http://localhost:3001/api/items", 
+            .get("https://trashwithus-api.herokuapp.com/api/items", 
             {params: {id: itemIdStr}})
             .then(response => {
                 setActions(response.data)
-                console.log(response.data)
             })
             .catch(error => {
                 console.error(error);

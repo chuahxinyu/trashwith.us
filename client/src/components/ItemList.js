@@ -10,7 +10,7 @@ export default function ItemList() {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3001/api/items")
+            .get("https://trashwithus-api.herokuapp.com/api/items")
             .then(response => {
                 setItems(response.data)
             })

@@ -9,7 +9,7 @@ const { Items, Actions, ItemActions, sequelize } = require("./models");
 const cors = require('cors');
 const { QueryTypes } = require('sequelize');
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'https://trashwithus.herokuapp.com'
 }));
 
 app.use(express.json());
@@ -54,7 +54,7 @@ app.post('/api/itemactions', async (req, res) => {
 });
 
 db.sequelize.sync().then(() => {
-    app.listen(process.env.PORT || 3001, () => {
+    app.listen(process.env.PORT ||3001, () => {
         console.log("Server running on port 3001");
     });
 });
