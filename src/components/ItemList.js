@@ -7,31 +7,31 @@ export default function ItemList() {
     const items = [
         {
             "id": 1, 
-            "itemName": "aerosol cans",
+            "itemName": "Aerosol Cans",
             "itemImg": "",
             "actionList": [1, 2, 3]
         },
         {
             "id": 2,
-            "itemName": "adhesive strips (band aids)", 
+            "itemName": "Adhesive Strips (Band Aids)", 
             "itemImg": "",
             "actionList": [1, 2]
         },
         {
             "id": 3,
-            "itemName": "aluminium cans", 
+            "itemName": "Aluminium Cans", 
             "itemImg": "",
             "actionList": [2, 3]
         },
         {
             "id": 4,
-            "itemName": "alumninuim foil", 
+            "itemName": "Alumninuim Foil", 
             "itemImg": "",
             "actionList": [1, 3]
         },
         {
             "id": 5,
-            "itemName": "aluminium trays", 
+            "itemName": "Aluminium Trays", 
             "itemImg": "",
             "actionList": [2]
         }
@@ -40,17 +40,17 @@ export default function ItemList() {
     const actionlist = [
         {
             id: 1,
-            name: "recycle",
+            name: "Recycle",
             description: "recycle at a local recycling centre"
         },
         {
             id: 2,
-            name: "landfill",
+            name: "Landfill",
             description: "place in your landfill bin"
         },
         {
             id: 3,
-            name: "donate",
+            name: "Donate",
             description: "donate it to a local donation centre"
         }
     ]
