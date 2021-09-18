@@ -6,25 +6,8 @@ import { FaSearch } from 'react-icons/fa'
 export default function ItemList() {
     const [isBlurred, setIsBlurred] = useState(false)
     const [items, setItems] = useState([])
+    const [actionlist, setActions] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
-
-    const actionlist = [
-        {
-            id: 1,
-            name: "Recycle",
-            description: "recycle at a local recycling centre"
-        },
-        {
-            id: 2,
-            name: "Landfill",
-            description: "place in your landfill bin"
-        },
-        {
-            id: 3,
-            name: "Donate",
-            description: "donate it to a local donation centre"
-        }
-    ]
 
     useEffect(() => {
         axios
@@ -33,6 +16,13 @@ export default function ItemList() {
                 setItems(response.data)
             })
     }, [])
+
+
+    // onClick ((id) => {
+    //     axios
+    //         .get("http://localhost:30002/api/items")
+    // })
+    // /api/items/id
 
     return (
         <div>
