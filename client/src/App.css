@@ -13,6 +13,7 @@
   --text-primary: #B46E4C;
   --text-secondary: #8C5B3B;
   --text-tertiary: #FFF1DE;
+  --text-error: #b44c4c;
   --bg-primary: #63836B;
 
   --item-bg: var(--text-tertiary);
@@ -303,6 +304,28 @@ p {
     outline: none;
     color: var(--text-secondary);
     background-color: var(--popup-bg);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .form-img-input {
+    padding: 1em;
+    flex-grow: 1;
+    padding: 10px;
+    height: 50px;
+    border: 1px solid var(--text-secondary);
+    outline: none;
+    color: var(--text-secondary);
+    background-color: var(--popup-bg);
+  }
+
+  .form-upload-btn {
+    background-color: var(--text-secondary);
+    color: var(--text-tertiary);
+    outline: none;
+    border: none;
+    padding: 0.3em 1em;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
   }
 
   .form-btn {
@@ -313,6 +336,13 @@ p {
     padding: 1em;
     font-family: 'Montserrat', sans-serif;
     margin: 0.5em;
+    cursor: pointer;
+  }
+
+  .form-error {
+    color: var(--text-error);
+    font-size: 0.75em;
+    text-align: right;
   }
 
 

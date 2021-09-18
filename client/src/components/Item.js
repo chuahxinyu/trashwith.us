@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Popup from './Popup'
 
-export default function Item({name, imgSrc, actionlist, setIsBlurred}) {
+export default function Item({name, imgSrc, actionlist, setIsBlurred, items}) {
     const [isOpen, setOpenPopup] = useState(false)
 
     return (
@@ -19,6 +19,7 @@ export default function Item({name, imgSrc, actionlist, setIsBlurred}) {
                 onClose = {() => {setOpenPopup(false); setIsBlurred(false)}}
                 name = {name}
                 imgSrc={imgSrc}
+                items = {items}
             />
         </div>
     )

@@ -5,7 +5,9 @@ import Action from './Action'
 import AddAction from './AddAction'
 import { FaPlusCircle } from 'react-icons/fa';
 
-export default function Popup({isOpen, onClose, actionlist, name, imgSrc}) {
+export default function Popup({isOpen, onClose, actionlist, name, imgSrc, items}) {
+    const [isAddOpen, setIsAddOpen] = useState(false)
+
     if (!isOpen) return null
 
     return (
@@ -41,6 +43,7 @@ export default function Popup({isOpen, onClose, actionlist, name, imgSrc}) {
                 <AddAction 
                     isOpen={isAddOpen}
                     onClose={() => setIsAddOpen(false)}
+                    items={items}
                 />
             </div>
         </div>
