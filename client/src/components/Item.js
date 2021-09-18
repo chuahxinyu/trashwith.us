@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
 import Popup from './Popup'
 
-export default function Item({name, actionlist, setIsBlurred}) {
+export default function Item({name, imgSrc, actionlist, setIsBlurred}) {
     const [isOpen, setOpenPopup] = useState(false)
 
     return (
         <div>
             <div className="item" onClick={() => {setOpenPopup(true); setIsBlurred(true)}}>
                 <div className="item-img-container">
-                    <div className="item-img"></div>
+                    <img className="item-img" src={imgSrc} alt={name}></img>
                 </div>
                 <p className="item-name">{name}</p>
             </div>
@@ -17,6 +17,7 @@ export default function Item({name, actionlist, setIsBlurred}) {
                 actionlist = {actionlist}
                 onClose = {() => {setOpenPopup(false); setIsBlurred(false)}}
                 name = {name}
+                imgSrc={imgSrc}
             />
         </div>
     )

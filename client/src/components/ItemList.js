@@ -86,12 +86,12 @@ export default function ItemList() {
                     <Item 
                         key = {item.id}
                         name = {item.name}
+                        imgSrc = {item.imgSrc}
                         actionlist = {actionlist}
                         setIsBlurred = {setIsBlurred}
                     />
                 ))}
             </div>
-            
             
             {isBlurred ?
                 <div className="blur"></div>
