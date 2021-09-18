@@ -248,6 +248,73 @@ p {
     padding: 0.75rem 1rem;
   }
 
+  .add-btn-in-popup-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .add-btn-in-popup {
+    color: var(--text-primary);
+    transform: scale(2.5);
+    margin: 2em 1em;
+    cursor: pointer;
+  }
+
+.add-btn-front {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  color: var(--text-primary);
+  transform: scale(4);
+  cursor: pointer;
+}
+.add-btn-back {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  color: var(--text-tertiary);
+  transform: scale(3.5);
+  cursor: pointer;
+}
+
+
+.add-form {
+  margin: 5% 10%;
+}
+
+  .form-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-label {
+    margin: 5%;
+    width: 20%;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-secondary);
+    font-weight: bold;
+  }
+
+  .form-text-input {
+    padding: 1em;
+    flex-grow: 1;
+    padding: 10px;
+    height: 50px;
+    border: 1px solid var(--text-secondary);
+    outline: none;
+    color: var(--text-secondary);
+    background-color: var(--popup-bg);
+  }
+
+  .form-btn {
+    background-color: var(--text-secondary);
+    color: var(--text-tertiary);
+    outline: none;
+    border: none;
+    padding: 1em;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0.5em;
+  }
 
 
   

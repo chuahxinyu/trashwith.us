@@ -12,6 +12,7 @@ export default function Item({name, actionlist, setIsBlurred}) {
                 </div>
                 <p className="item-name">{name}</p>
             </div>
+            
             <Popup 
                 isOpen = {isOpen}
                 actionlist = {actionlist}

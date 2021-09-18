@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
 import Item from './Item'
+import { FaPlusCircle, FaCircle } from 'react-icons/fa';
+import AddItem from './AddItem';
 
 export default function ItemList() {
     const [isBlurred, setIsBlurred] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
 
     const items = [
         {
@@ -68,6 +71,15 @@ export default function ItemList() {
                 ))}
             </div>
             
+            <div onClick={() => {setIsOpen(true); setIsBlurred(true)}}>
+                <FaCircle className="add-btn-back" />
+                <FaPlusCircle className="add-btn-front"/>
+            </div>
+
+            <AddItem 
+                isOpen={isOpen}
+                onClose = {() => {setIsOpen(false); setIsBlurred(false)}}
+            />
             
             {isBlurred ?
                 <div className="blur"></div>
