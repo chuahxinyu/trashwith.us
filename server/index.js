@@ -5,6 +5,11 @@ const db = require('./models');
 
 const { Items } = require("./models");
 
+const cors = require('cors');
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
+
 app.use(express.json());
 
 app.get('/api/items', async (req, res) => {
