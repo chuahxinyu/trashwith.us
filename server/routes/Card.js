@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const { Card } = require("../models");
+const { Items } = require("../models");
 
-// Everything in this file is useless
+// Gets all records from `items`
 router.get('/', async (req, res) => {
-    const listOfCards = await Card.findAll();
-    res.json(listOfCards);
+    const listOfItems = await Items.findAll();
+    res.json(listOfItems);
 });
 
 router.post('/', async (req, res) => {
-    const card = req.body;
-    await Cards.create(Card);
-    res.json(card);
+    const item = req.body;
+    await Items.create(item);
+    res.json(item);
 })
 
 module.exports = router;
