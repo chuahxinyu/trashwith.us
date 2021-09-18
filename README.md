@@ -8,5 +8,11 @@
 * `react-icons`
 * [`react-icons`](https://www.npmjs.com/package/react-icons): to make use of Font Awesome icons
 
-
+### Backend
+* `express`
+* `mysql2`
+* `sequelize`
+* `sequelize-cli`
+* `cors`
+* `nodemon`
 
