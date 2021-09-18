@@ -40,7 +40,7 @@ export default function ItemList() {
                 {items.map((item) => (
                     <Item 
                         key = {item.id}
-                        name = {item.itemName}
+                        name = {item.name}
                         actionlist = {actionlist}
                         setIsBlurred = {setIsBlurred}
                     />
