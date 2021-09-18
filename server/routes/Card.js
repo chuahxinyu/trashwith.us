@@ -8,10 +8,4 @@ router.get('/', async (req, res) => {
     res.json(listOfCards);
 });
 
-router.post('/', async (req, res) => {
-    const card = req.body;
-    await Cards.create(Card);
-    res.json(card);
-})
-
 module.exports = router;
