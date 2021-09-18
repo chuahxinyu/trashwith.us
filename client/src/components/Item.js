@@ -3,7 +3,6 @@ import Popup from './Popup'
 
 export default function Item({name, actionlist, setIsBlurred}) {
     const [isOpen, setOpenPopup] = useState(false)
-
     return (
         <div>
             <div className="item" onClick={() => {setOpenPopup(true); setIsBlurred(true)}}>
