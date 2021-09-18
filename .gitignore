@@ -10,6 +10,7 @@ client/node_modules
 
 # testing
 /coverage
+/server/tests
 
 # production
 /build

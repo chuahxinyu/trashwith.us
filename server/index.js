@@ -4,10 +4,10 @@ const app = express();
 
 const db = require('./models');
 
-const { Items, Actions } = require("./models");
+const { Items, Actions, ItemActions, sequelize } = require("./models");
 
 const cors = require('cors');
-const ItemActions = require('./models/ItemActions');
+const { QueryTypes } = require('sequelize');
 app.use(cors({
     origin: 'http://localhost:3000'
 }));
@@ -19,14 +19,13 @@ app.get('/api/items', async (req, res) => {
     const qdata = q.query;
 
     if (qdata.id) {
-        const action = Actions.findAll({
-            attributes: ['actionName', 'description'],
-            where: {ItemId: qdata.id},
-            include: [{
-                model: ItemActions,
-                required: true
-            }]
-        });
+        const action = await sequelize.query(
+            'SELECT actionName, description FROM actions INNER JOIN itemactions ON itemactions.actionId = actions.id WHERE itemId = ?',
+            {
+                replacements: [qdata.id],
+                type: QueryTypes.SELECT
+            }
+        );
         console.log(qdata.id);
         res.json(action);
     } else {
@@ -37,13 +36,22 @@ app.get('/api/items', async (req, res) => {
 
 app.post('/api/items', async (req, res) => {
     const item = req.body;
+    console.log(item);
     await Items.create(item);
     res.json(item);
 });
 
-app.get('/api/items', (req, res) => {
-    
-})
+app.post('/api/actions', async (req, res) => {
+    const action = req.body;
+    await Actions.create(action);
+    res.json(action);
+});
+
+app.post('/api/itemactions', async (req, res) => {
+    const itemaction = req.body;
+    await ItemActions.create(itemaction);
+    res.json(itemaction);
+});
 
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {

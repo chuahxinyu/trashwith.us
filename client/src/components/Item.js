@@ -6,14 +6,18 @@ export default function Item({itemId, name, imgSrc, setIsBlurred}) {
     const [isOpen, setOpenPopup] = useState(false)
     const [actionlist, setActions] = useState([])
 
-    const getActions = itemId => {
+    const getActions = ({itemId}) => {
+        var itemIdStr = itemId + ""
         axios
             .get("http://localhost:3001/api/items", 
-            {params: {id: itemId}})
+            {params: {id: itemIdStr}})
             .then(response => {
                 setActions(response.data)
+                console.log(response.data)
             })
-
+            .catch(error => {
+                console.error(error);
+            })
     }
 
     return (
@@ -21,7 +25,7 @@ export default function Item({itemId, name, imgSrc, setIsBlurred}) {
             <div 
                 className="item"
                 onClick={() => {
-                    getActions(itemId); setOpenPopup(true); setIsBlurred(true)
+                    getActions({itemId}); setOpenPopup(true); setIsBlurred(true)
                 }}>
 
                 <div className="item-img-container">
