@@ -9,6 +9,8 @@ export default function Item({items, itemId, name, imgSrc, setIsBlurred}) {
 
     const getActions = ({itemId}) => {
         var itemIdStr = itemId + ""
+
+        // http://localhost:3001/api/items
         axios
             .get("https://trashwithus-api.herokuapp.com/api/items", 
             {params: {id: itemIdStr}})

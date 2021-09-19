@@ -8,9 +8,15 @@ const { Items, Actions, ItemActions, sequelize, Suggestions } = require("./model
 
 const cors = require('cors');
 const { QueryTypes } = require('sequelize');
-app.use(cors({
-    origin: 'https://trashwithus.herokuapp.com'
-}));
+let ALLOWED_ORIGINS = ["https://trashwithus.herokuapp.com", "http://trashwith.us/", "http://localhost:3000", "http://trashwith.us"];
+app.use((req, res, next) => {
+    let origin = req.headers.origin;
+    let theOrigin = (ALLOWED_ORIGINS.indexOf(origin) >= 0) ? origin : ALLOWED_ORIGINS[0];
+    res.header("Access-Control-Allow-Origin", theOrigin);
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    next();
+})
 
 app.use(express.json());
 

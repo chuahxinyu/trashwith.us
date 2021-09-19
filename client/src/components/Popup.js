@@ -38,7 +38,9 @@ export default function Popup({isOpen, onClose, actionlist, name, imgSrc, items}
             </div>
 
             <div className="add-btn-in-popup-container" onClick={() => {setIsAddOpen(true)}}>
-                <FaPlusCircle className="add-btn-in-popup" data-tip data-for="addAction" />
+                <FaPlusCircle 
+                    className="add-btn-in-popup" 
+                    data-tip data-for="addAction" />
             </div>
             <ReactTooltip className="tooltip" id="addAction"><p>Suggest an action</p></ReactTooltip>
 
