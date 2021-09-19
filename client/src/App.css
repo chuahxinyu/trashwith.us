@@ -13,6 +13,9 @@
   --text-primary: #B46E4C;
   --text-secondary: #8C5B3B;
   --text-tertiary: #FFF1DE;
+  --text-error: #b44c4c;
+  --text-success: #63836B;
+
   --bg-primary: #63836B;
 
   --item-bg: var(--text-tertiary);
@@ -55,7 +58,7 @@ p {
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   font-family: 'Montserrat', sans-serif;
-  color: var(--text-tertiary);
+  color: rgb(175, 175, 175);
   opacity: 1; /* Firefox */
 }
 
@@ -82,6 +85,13 @@ p {
     transform: scale(3);
     margin: 1em 2em;
   }
+    .github-btn:hover {
+      transform: scale(3.5);
+    }
+    .github-btn:active {
+      transform: scale(3);
+    }
+
   .header a {
     color: var(--header-text);
   }
@@ -114,7 +124,12 @@ p {
     outline: none;
     color: var(--bg-primary);
   }
-
+  .search-btn:hover .search-icon{
+      transform: scale(1.2);
+  }
+  .search-btn:active .search-icon{
+    transform: scale(1);
+  }
 
 .item-list {
   width: 80%;
@@ -149,6 +164,14 @@ p {
   justify-content: center;
   align-items: center;
 }
+  .item:hover {
+    box-shadow: 10px 10px 5px #3838385f;
+    transform: translate(10,10);
+  }
+  .item:active {
+    transform: scale(0.99);
+  }
+
   .item-img-container {
     display: flex;
     justify-content: center;
@@ -200,6 +223,12 @@ p {
       transform: scale(2);
       color: var(--btn-text);
     }
+      .close:hover {
+        transform: scale(2.5);
+      }
+      .close:active {
+        transform: scale(2);
+      }
 
     .popup-header h2 {
       margin-bottom: 1rem;
@@ -217,6 +246,7 @@ p {
   }
 
   .popup-column-2 {
+    padding: 1em 0.5em;
     flex-grow: 1;
   }
 
@@ -254,6 +284,133 @@ p {
     padding: 0.75rem 1rem;
   }
 
+  .add-btn-in-popup-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .add-btn-in-popup {
+    color: var(--text-primary);
+    transform: scale(2.5);
+    margin: 2em 1em;
+    cursor: pointer;
+  }
+    .add-btn-in-popup:hover {
+      transform: scale(3);
+    }
+    .add-btn-in-popup:active {
+      transform: scale(2.5);
+    }
+
+.add-btn-front {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  color: var(--text-primary);
+  transform: scale(4);
+  cursor: pointer;
+}
+  .add-btn-front:hover {
+    transform: scale(5);
+  }
+  .add-btn-fron:active {
+    transform: scale(4);
+  }
+
+.add-btn-back {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  color: var(--text-tertiary);
+  transform: scale(3.5);
+  cursor: pointer;
+}
 
 
-  
+.add-form {
+  margin: 5% 10%;
+}
+
+  .form-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-label {
+    margin: 5%;
+    width: 20%;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-secondary);
+    font-weight: bold;
+  }
+
+  .form-text-input {
+    padding: 1em;
+    flex-grow: 1;
+    padding: 10px;
+    height: 50px;
+    border: 1px solid var(--text-secondary);
+    outline: none;
+    color: var(--text-secondary);
+    background-color: var(--popup-bg);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .form-img-input {
+    padding: 1em;
+    flex-grow: 1;
+    padding: 10px;
+    height: 50px;
+    border: 1px solid var(--text-secondary);
+    outline: none;
+    color: var(--text-secondary);
+    background-color: var(--popup-bg);
+  }
+
+  .form-upload-btn {
+    background-color: var(--text-secondary);
+    color: var(--text-tertiary);
+    outline: none;
+    border: none;
+    padding: 0.3em 1em;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+  }
+
+  .form-btn {
+    background-color: var(--text-secondary);
+    color: var(--text-tertiary);
+    outline: none;
+    border: none;
+    padding: 1em;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0.5em;
+    cursor: pointer;
+  }
+    .form-btn:hover {
+      background-color: var(--text-tertiary);
+      color: var(--text-secondary);
+      outline: 1px solid var(--text-secondary);
+    }
+
+  .suggest-btn {
+    position: relative;
+    right: 0;
+  }
+
+  .form-error {
+    color: var(--text-error);
+    font-size: 0.75em;
+    text-align: right;
+  }
+
+  .form-success {
+    color: var(--text-success);
+    font-size: 0.75em;
+    text-align: center
+  }
+
+.tooltip p {
+  color: var(--text-tertiary);
+  text-align: center;
+}
