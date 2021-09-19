@@ -42,23 +42,13 @@ export default function ItemList() {
         }
     ]
 
-    const actionlist = [
-        {
-            id: 1,
-            name: "Recycle",
-            description: "recycle at a local recycling centre"
-        },
-        {
-            id: 2,
-            name: "Landfill",
-            description: "place in your landfill bin"
-        },
-        {
-            id: 3,
-            name: "Donate",
-            description: "donate it to a local donation centre"
-        }
-    ]
+    useEffect(() => {
+        axios
+            .get("https://trashwithus-api.herokuapp.com/api/items")
+            .then(response => {
+                setItems(response.data)
+            })
+    }, [])
 
     return (
         <div>
@@ -88,9 +78,9 @@ export default function ItemList() {
                 }).map((item) => (
                     <Item 
                         key = {item.id}
+                        itemId = {item.id}
                         name = {item.name}
                         imgSrc = {item.imgSrc}
-                        actionlist = {actionlist}
                         setIsBlurred = {setIsBlurred}
                         items = {items}
                     />

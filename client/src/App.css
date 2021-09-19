@@ -54,6 +54,12 @@ p {
   color: var(--text-secondary);
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-tertiary);
+  opacity: 1; /* Firefox */
+}
+
 
 .header{
   width: 100%;
@@ -90,6 +96,7 @@ p {
   justify-content: center;
 }
   .searchbar {
+    font-family: 'Montserrat', sans-serif;
     flex-grow: 1;
     padding: 10px;
     height: 50px;

@@ -18,7 +18,7 @@ export default function Popup({isOpen, onClose, actionlist, name, imgSrc, items}
                     <FaTimes />
                 </div>
             </div>
-            
+
             <div className="popup-container">
                 <div className="popup-img-container popup-column-1">
                     <img className="popup-img" src={imgSrc} alt={name}></img>
@@ -28,7 +28,7 @@ export default function Popup({isOpen, onClose, actionlist, name, imgSrc, items}
                 {actionlist.map((action) => (
                     <Action 
                         key = {action.id}
-                        name = {action.name}
+                        name = {action.actionName}
                         description = {action.description}
                         />
                     ))}
