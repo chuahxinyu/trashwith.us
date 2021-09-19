@@ -4,7 +4,7 @@ const app = express();
 
 const db = require('./models');
 
-const { Items, Actions, ItemActions, sequelize } = require("./models");
+const { Items, Actions, ItemActions, sequelize, Suggestions } = require("./models");
 
 const cors = require('cors');
 const { QueryTypes } = require('sequelize');
@@ -39,6 +39,13 @@ app.post('/api/items', async (req, res) => {
     console.log(item);
     await Items.create(item);
     res.json(item);
+});
+
+app.post('/api/suggestions', async (req, res) => {
+    const suggestion = req.body;
+    console.log(suggestion);
+    await Suggestions.create(suggestion);
+    res.json(suggestion);
 });
 
 app.post('/api/actions', async (req, res) => {
