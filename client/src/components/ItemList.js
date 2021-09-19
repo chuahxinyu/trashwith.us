@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Item from './Item'
 import { FaSearch } from 'react-icons/fa'
 import { FaPlusCircle, FaCircle } from 'react-icons/fa';
 import AddItem from './AddItem';
+import ReactTooltip from 'react-tooltip';
+import axios from 'axios'
 
 export default function ItemList() {
     const [isBlurred, setIsBlurred] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
     const [isAddOpen, setIsAddOpen] = useState(false)
-
+    // const [items, setItems] = useState([])
+    
     const items = [
         {
             "id": 1, 
@@ -41,14 +44,13 @@ export default function ItemList() {
             "actionList": [2]
         }
     ]
-
-    useEffect(() => {
-        axios
-            .get("https://trashwithus-api.herokuapp.com/api/items")
-            .then(response => {
-                setItems(response.data)
-            })
-    }, [])
+    // useEffect(() => {
+    //     axios
+    //         .get("https://trashwithus-api.herokuapp.com/api/items")
+    //         .then(response => {
+    //             setItems(response.data)
+    //         })
+    // }, [])
 
     return (
         <div>
@@ -61,7 +63,7 @@ export default function ItemList() {
                 </input>
 
                 <button type="submit" className="search-btn">
-                    <FaSearch />
+                    <FaSearch className="search-icon"/>
                 </button>
             </div>
 
@@ -92,10 +94,11 @@ export default function ItemList() {
                 <FaPlusCircle className="add-btn-front"/>
             </div>
 
-            <AddItem 
+            <AddItem data-tip data-for="addItem"
                 isOpen={isAddOpen}
                 onClose={() => setIsAddOpen(false)}
             />
+             <ReactTooltip className="tooltip" id="addItem"><p>Suggest an item</p></ReactTooltip>
           
             {isBlurred ?
                 <div className="blur"></div>

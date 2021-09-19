@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FaTimes, FaExclamationTriangle } from 'react-icons/fa'
+import axios from 'axios'
 
 export default function AddAction({isOpen, onClose, items}) {
     const [name, setName] = useState("")
@@ -7,6 +8,8 @@ export default function AddAction({isOpen, onClose, items}) {
 
     const [nameError, setNameError] = useState(false)
     const [descriptionError, setDescriptionError] = useState(false)
+
+    const [addedAction, setAddedAction] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -25,10 +28,21 @@ export default function AddAction({isOpen, onClose, items}) {
 
         if (name && description) {
             // post request
-            const newAction = {"name": {name}, "description": {description}}
-            console.log(newAction)
+            axios
+                .post('https://trashwithus-api.herokuapp.com/api/suggestions', {
+                    type: "Action",
+                    name: {name},
+                    description: {description}
+                })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
             setName("")
             setDescription("")
+            setAddedAction(true)
         }
     }
 
@@ -36,21 +50,15 @@ export default function AddAction({isOpen, onClose, items}) {
     return (
         <div className="popup">
             <div className="popup-header">
-                <h2 className="popup-header">Add an action</h2>
+                <h2 className="popup-header">Suggest an action</h2>
                 <div className="close" onClick={onClose}>
                     <FaTimes />
                 </div>
             </div>
+
+            <p className="sub-text">found another way to get rid of an item sustainably? suggest it here!</p>
             
             <form className="add-form" onSubmit={handleSubmit}>
-                <div className="form-row">
-                    <label className="form-label" >action name</label>
-                    <select className="form-text-input">
-                        {items.map( (item) => 
-                        <option key={item.id}>{item.name}</option>)}
-                    </select>
-                </div>
-
                 <div className="form-row">
                     <label className="form-label" >action name</label>
                     <input 
@@ -58,7 +66,12 @@ export default function AddAction({isOpen, onClose, items}) {
                         type="text"
                         placeholder="enter action name..."
                         value={name}
-                        onChange={(e) => setName(e.target.value)}>
+                        onChange={(e) => {
+                            setName(e.target.value); 
+                            if (name) {
+                                setAddedAction(false)
+                            }
+                            }}>
                     </input>
                 </div>
                 {nameError ?
@@ -76,14 +89,17 @@ export default function AddAction({isOpen, onClose, items}) {
                     </input>
                 </div>
 
-                
                 {descriptionError ?
                     <p className="form-error"><FaExclamationTriangle /> please enter an action description</p>
                 :null}
 
-                <button type="submit" className="form-btn">
-                    create action
+                <button type="submit" className="form-btn suggest-btn">
+                    suggest action
                 </button>
+
+                {addedAction ?
+                    <p className="form-success">Your suggestion has been made! Feel free to suggest some more.</p>
+                : null}
                 
             </form>
 

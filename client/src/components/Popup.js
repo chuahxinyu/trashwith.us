@@ -4,6 +4,7 @@ import { useState } from 'react/cjs/react.development'
 import Action from './Action'
 import AddAction from './AddAction'
 import { FaPlusCircle } from 'react-icons/fa';
+import ReactTooltip from 'react-tooltip';
 
 export default function Popup({isOpen, onClose, actionlist, name, imgSrc, items}) {
     const [isAddOpen, setIsAddOpen] = useState(false)
@@ -25,19 +26,21 @@ export default function Popup({isOpen, onClose, actionlist, name, imgSrc, items}
                 </div>
 
                 <div className="popup-column-2">
-                {actionlist.map((action) => (
-                    <Action 
-                        key = {action.id}
-                        name = {action.actionName}
-                        description = {action.description}
-                        />
-                    ))}
+                    {actionlist.map((action) => (
+                        <Action 
+                            key = {action.id}
+                            name = {action.actionName}
+                            description = {action.description}
+                            />
+                        ))}
+                    {actionlist.length ? null : <p>👀 There are no actions yet, maybe you should suggest one!</p>}
                 </div>
             </div>
 
             <div className="add-btn-in-popup-container" onClick={() => {setIsAddOpen(true)}}>
-                <FaPlusCircle className="add-btn-in-popup"/>
+                <FaPlusCircle className="add-btn-in-popup" data-tip data-for="addAction" />
             </div>
+            <ReactTooltip className="tooltip" id="addAction"><p>Suggest an action</p></ReactTooltip>
 
             <div>
                 <AddAction 

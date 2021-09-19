@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { FaTimes, FaExclamationTriangle } from 'react-icons/fa'
+import axios from 'axios'
 
 export default function AddItem({isOpen, onClose}) {
     
     const [name, setName] = useState("")
-    const [imgSrc, setImgSrc] = useState("")
 
     const [nameError, setNameError] = useState(false)
-    const [imgError, setImgError] = useState(false)
+
+    const [addedItem, setAddedItem] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -18,18 +19,21 @@ export default function AddItem({isOpen, onClose}) {
             setNameError(false)
         }
 
-        if (!imgSrc) {
-            setImgError(true)
-        } else {
-            setImgError(false)
-        }
+        if (name) {
+            axios
+                .post('https://trashwithus-api.herokuapp.com/api/suggestions', {
+                    type: "Item",
+                    name: {name}
+                })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
 
-        if (name && imgSrc) {
-            // post request
-            const newItem = {"name": {name}, "imgSrc": {imgSrc}}
-            console.log(newItem)
             setName("")
-            setImgSrc("")
+            setAddedItem(true)
         }
     }
     
@@ -38,7 +42,7 @@ export default function AddItem({isOpen, onClose}) {
         <div className="popup">
             
             <div className="popup-header">
-                <h2 className="popup-header">Add an item</h2>
+                <h2 className="popup-header">Suggest an item</h2>
                 <div 
                     className="close"
                     onClick={onClose}>
@@ -46,7 +50,7 @@ export default function AddItem({isOpen, onClose}) {
                 </div>
             </div>
 
-            <p className="sub-text">did we miss something out in our list? add it here!</p>
+            <p className="sub-text">did we miss something out in our list? suggest one here!</p>
 
             <form className="add-form" onSubmit={handleSubmit}>
 
@@ -57,14 +61,18 @@ export default function AddItem({isOpen, onClose}) {
                         type="text"
                         placeholder="eg. batteries"
                         value={name}
-                        onChange={(e) => setName(e.target.value)}>
+                        onChange={(e) => {
+                            setName(e.target.value);
+                            if (name) {
+                                setAddedItem(false)
+                            }}}>
                     </input>
                 </div>
                 {nameError ?
                     <p className="form-error"><FaExclamationTriangle /> please enter an item name</p>
                 : null}
 
-                <div className="form-row">
+                {/* <div className="form-row">
                     <label className="form-label">item image</label>
                     <div className="form-img-input">
                         <button 
@@ -80,15 +88,17 @@ export default function AddItem({isOpen, onClose}) {
                 
                 {imgError ?
                     <p className="form-error"><FaExclamationTriangle /> please enter an item image</p>
-                :null}
+                :null} */}
 
                 <button type="submit" className="form-btn">
-                    create item
+                    suggest item
                 </button>
                 
             </form>
 
-            
+            {addedItem ?
+                <p className="form-success">Your suggestion has been made! Feel free to suggest some more.</p>
+            : null}
 
         </div>
     )

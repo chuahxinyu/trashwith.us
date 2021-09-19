@@ -3,7 +3,7 @@ import Popup from './Popup'
 import axios from 'axios'
 
 
-export default function Item({itemId, name, imgSrc, setIsBlurred}) {
+export default function Item({items, itemId, name, imgSrc, setIsBlurred}) {
     const [isOpen, setOpenPopup] = useState(false)
     const [actionlist, setActions] = useState([])
 
