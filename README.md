@@ -1,11 +1,11 @@
 <h1 align="center"> trashwith.us</h1>
 
 > a website that gives you suggestions on how to get rid of your unwanted items responsibly and sustainably
-## [Live Demo](trashwith.us)
+## [Live Demo](https://trashwithus.herokuapp.com/)
+> hosted on Heroku
 
 ![](demo.gif)
-* [Alternative Demo Link (Heroku)](https://trashwithus.herokuapp.com/)
-* [Devpost Project](https://devpost.com/software/trashwith-us)
+* [Devpost](https://devpost.com/software/trashwith-us)
 
 ## ✨ What it does
 * trashwith.us is a website that gives you suggestions on how to get rid of your unwanted items responsibly and sustainably
